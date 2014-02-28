@@ -3,13 +3,6 @@ require 'raca'
 module CarrierWave
   module Storage
     class Raca < Abstract
-      def self.connection_cache
-        @connection_cache ||= {}
-      end
-
-      def self.clear_connection_cache!
-        @connection_cache = {}
-      end
 
       def store!(file)
         File.new(uploader, connection, uploader.store_path).tap do |raca_file|
@@ -22,11 +15,7 @@ module CarrierWave
       end
 
       def connection
-        @connection ||= begin
-          username = uploader.raca_username
-          api_key = uploader.raca_api_key
-          self.class.connection_cache[username] ||= ::Raca::Account.new(username, api_key)
-        end
+        @connection ||= ::Raca::Account.new(uploader.raca_username, uploader.raca_api_key)
       end
 
       class File
