@@ -20,12 +20,12 @@ module CarrierWave
 
       class File
         attr_writer :content_type
-        attr_reader :uploader, :connection, :path
+        attr_reader :uploader, :account, :path
 
-        def initialize(uploader, connection, path)
-          @uploader   = uploader
-          @connection = connection
-          @path       = path
+        def initialize(uploader, account, path)
+          @uploader = uploader
+          @account  = account
+          @path     = path
         end
 
         # is this required?
@@ -97,7 +97,7 @@ module CarrierWave
         end
 
         def containers
-          @containers ||= connection.containers(uploader.raca_region)
+          @containers ||= account.containers(uploader.raca_region)
         end
 
         def container
