@@ -69,7 +69,7 @@ module CarrierWave
         end
 
         def store(new_file)
-          container.upload(path, new_file.file)
+          container.upload(path, new_file.file, "Content-Type" => new_file.content_type)
         end
 
         def to_file

@@ -11,7 +11,7 @@ Gem::Specification.new do |gem|
   gem.files         =  Dir.glob("{lib}/**/*") + ["README.markdown"]
 
   gem.add_dependency 'carrierwave', '>= 0.7'
-  gem.add_dependency 'raca',        '>= 0.2.0'
+  gem.add_dependency 'raca',        '>= 0.3.0', '< 1.0'
 
   gem.add_development_dependency 'rspec', '~> 2.14'
   gem.add_development_dependency 'rake', '~> 10.0'

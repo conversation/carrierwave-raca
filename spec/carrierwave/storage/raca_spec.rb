@@ -124,9 +124,9 @@ describe CarrierWave::Storage::Raca::File do
     end
     context 'when the file is not already on cloudfiles' do
       it 'uploads the provided file to cloudfiles' do
-        container.should_receive(:upload).with(path, "io-ish")
+        container.should_receive(:upload).with(path, "io-ish", "Content-Type" => "text/plain")
 
-        raca_file.store(double(:new_file, file: "io-ish"))
+        raca_file.store(double(:new_file, file: "io-ish", content_type: "text/plain"))
       end
     end
   end
