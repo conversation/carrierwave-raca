@@ -56,12 +56,12 @@ module CarrierWave
         end
 
         def read
-          tempfile = Tempfile.new
+          tempfile = Tempfile.new("carrierwave-raca")
           tempfile.close
           container.download(path, tempfile.path)
-          File.read(tempfile.path)
+          ::File.read(tempfile.path)
         ensure
-          tempfile.unlink
+          tempfile.unlink if tempfile
         end
 
         def size
