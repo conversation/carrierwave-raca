@@ -39,6 +39,9 @@ module CarrierWave
 
         def delete
           container.delete(path)
+        rescue ::Raca::NotFoundError
+          # if the file doesn't exist on cloud files, then deleting it was a no-op anyway
+          true
         end
 
         def extension

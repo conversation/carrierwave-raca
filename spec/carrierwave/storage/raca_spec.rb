@@ -66,9 +66,17 @@ describe CarrierWave::Storage::Raca::File do
   end
 
   describe '#delete' do
-    it "should delegate the deletion to the container" do
-      container.should_receive(:delete).with("files/1/file.txt")
-      raca_file.delete
+    context "when the file exists on cloud files" do
+      it "should delegate the deletion to the container" do
+        container.should_receive(:delete).with("files/1/file.txt")
+        raca_file.delete
+      end
+    end
+    context "when the file doesn't exist on cloud files" do
+      it "should return true anyway" do
+        container.should_receive(:delete).with("files/1/file.txt").and_raise(::Raca::NotFoundError)
+        raca_file.delete.should be true
+      end
     end
   end
 
