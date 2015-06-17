@@ -1,7 +1,7 @@
 
 Gem::Specification.new do |gem|
   gem.name          = 'carrierwave-raca'
-  gem.version       = '0.1.0'
+  gem.version       = '0.1.1'
   gem.authors       = ['James Healy']
   gem.email         = ['james.healy@thecovnersation.edu.au']
   gem.description   = %q{Use raca for Rackspace cloud files support in CarrierWave}

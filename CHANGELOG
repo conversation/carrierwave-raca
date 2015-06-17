@@ -1,0 +1,6 @@
+v0.1.1 (17th June 2015)
+* Attempting to delete a file that doesn't exist on cloud files shouldn't raise an
+  exception
+
+v0.1.0 (23rd June 2014)
+* Initial Release
